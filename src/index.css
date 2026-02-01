@@ -1,5 +1,23 @@
 @import "tailwindcss";
 
+* {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* DARK (default) */
+body {
+  background-color: #0f0f0f;
+  color: #e5e7eb;
+}
+
+/* LIGHT */
+html.light body {
+  background-color: #ffffff;
+  color: #111827;
+}
+
+
+
 /* @theme{
   --color-border: hsl(var(--border));
   --color-background: hsl(var(--background));

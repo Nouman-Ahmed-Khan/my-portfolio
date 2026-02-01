@@ -1,0 +1,57 @@
+/* Cosmic Background */
+.cosmic-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.cosmic-gradient {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(88, 28, 135, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(15, 118, 110, 0.12) 0%, transparent 50%),
+    linear-gradient(180deg, #0a0e1a 0%, #0d1525 50%, #0a1628 100%);
+}
+
+.milky-way {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  animation: milkyDrift 120s linear infinite;
+  background:
+    linear-gradient(125deg, transparent 40%, rgba(147, 197, 253, 0.02) 45%, transparent 50%);
+}
+
+@keyframes milkyDrift {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Stars */
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle var(--duration) ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%,100% { opacity: var(--min-opacity); transform: scale(1); }
+  50% { opacity: var(--max-opacity); transform: scale(1.2); }
+}
+
+/* Glass Card */
+.glass-card {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.6), rgba(30, 41, 59, 0.4));
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(34, 211, 209, 0.15);
+  box-shadow: 0 0 40px rgba(34, 211, 209, 0.1);
+}
