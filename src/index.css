@@ -16,6 +16,21 @@ html.light body {
   color: #111827;
 }
 
+@keyframes float {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+.float-card {
+  animation: float 6s ease-in-out infinite;
+}
+
+.glow-border {
+  box-shadow:
+    0 0 15px rgba(34,211,238,0.3),
+    0 0 40px rgba(34,211,238,0.2),
+    0 0 80px rgba(34,211,238,0.1);
+}
 
 
 /* @theme{
