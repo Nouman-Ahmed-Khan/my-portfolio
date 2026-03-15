@@ -1,19 +1,21 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home } from "./pages/Home";
-import { NotFound } from "./pages/NotFound.jsx";
+import React from 'react';
+import { ThemeProvider } from './context/ThemeContext';
+import CosmicBackground from './components/layout/CosmicBackground';
+import Navbar from './components/layout/Navbar';
+import Hero from './components/sections/Hero';
+import Footer from './components/layout/Footer';
 
 function App() {
-
   return (
-    <>
-    <BrowserRouter>
-      <Routes>
-        <Route index element={<Home/>} />
-        <Route path="*" element={<NotFound/>} />
-      </Routes>
-    </BrowserRouter>
-    </>
-  )
+    <ThemeProvider>
+      <div className="min-h-screen flex flex-col relative">
+        <CosmicBackground />
+        <Navbar />
+        <Hero />
+        <Footer />
+      </div>
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;

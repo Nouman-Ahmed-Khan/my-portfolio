@@ -1,54 +1,75 @@
 @import "tailwindcss";
 
-* {
-  transition: background-color 0.3s ease, color 0.3s ease;
+@theme {
+  --font-mono: "Fira Code", monospace;
+  --font-sans: "Space Grotesk", sans-serif;
+  
+  /* Project Card Animations */
+  @keyframes slide-in-right {
+    0% { opacity: 0; transform: translateX(50px); filter: blur(8px); }
+    100% { opacity: 1; transform: translateX(0); filter: blur(0); }
+  }
+  
+  @keyframes slide-in-left {
+    0% { opacity: 0; transform: translateX(-50px); filter: blur(8px); }
+    100% { opacity: 1; transform: translateX(0); filter: blur(0); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+
+  /* Cosmic Background Animations */
+  @keyframes twinkle {
+    0%, 100% { 
+      opacity: 0.2; 
+      transform: scale(1); 
+    }
+    50% { 
+      opacity: 0.8; 
+      transform: scale(1.2); 
+      box-shadow: 0 0 15px rgba(34, 211, 209, 0.4);
+    }
+  }
+
+  @keyframes cosmic-drift {
+    0% { transform: translateY(0px) translateX(0px); }
+    50% { transform: translateY(-20px) translateX(10px); }
+    100% { transform: translateY(0px) translateX(0px); }
+  }
 }
 
-/* DARK (default) */
+/* Animation Classes */
+.animate-slide-in-right {
+  animation: slide-in-right 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.project-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-twinkle {
+  animation: twinkle var(--twinkle-duration, 4s) ease-in-out infinite;
+}
+
+.cosmic-bg-layer {
+  animation: cosmic-drift 20s ease-in-out infinite;
+}
+
+/* UI Elements */
+.carousel-arrow {
+  @apply w-10 h-10 rounded-full flex items-center justify-center border border-cyan-400/20 bg-slate-900/60 text-cyan-400/70 transition-all duration-300 cursor-pointer backdrop-blur-sm;
+}
+
+.carousel-arrow:hover {
+  @apply border-cyan-400 text-cyan-400 bg-cyan-400/10 shadow-[0_0_20px_rgba(34,211,209,0.4)];
+}
+
 body {
-  background-color: #0f0f0f;
-  color: #e5e7eb;
+  @apply bg-[#0a0e1a] overflow-x-hidden;
 }
-
-/* LIGHT */
-html.light body {
-  background-color: #ffffff;
-  color: #111827;
-}
-
-@keyframes float {
-  0%,100% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
-}
-
-.float-card {
-  animation: float 6s ease-in-out infinite;
-}
-
-.glow-border {
-  box-shadow:
-    0 0 15px rgba(34,211,238,0.3),
-    0 0 40px rgba(34,211,238,0.2),
-    0 0 80px rgba(34,211,238,0.1);
-}
-
-
-/* @theme{
-  --color-border: hsl(var(--border));
-  --color-background: hsl(var(--background));
-  --color-foreground: hsl(var(--foreground));
-
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
-
-  --color-card: hsl(var(--card));
-
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
-  --animate-fade-in: fade-in 0.7s ease-out forwards;
-  --animate-fade-in-delay-1: fade-in 0.7s ease-out 0.2s forwards;
-  --animate-fade-in-delay-2: fade-in 0.7s ease-out 0.4s forwards;
-  --animate-fade-in-delay-3: fade-in 0.7s ease-out 0.6s forwards;
-  --animate-fade-in-delay-4: fade-in 0.7s ease-out 0.8s forwards;
-  --animate-meteor: meteor 5s linear infinite;
-} */
