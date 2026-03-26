@@ -12,7 +12,8 @@ const Hero = () => {
       role: "Frontend / UI Development",
       desc: "Crypto wallet UI built from Figma with responsive design and dynamic charts",
       tech: ["React.js", "Tailwind CSS", "Chart.js"],
-      link: "https://toon-swap.vercel.app/"
+      link: "https://toon-swap.vercel.app/",
+      code: "https://github.com/Nouman-Ahmed-Khan/Toon-Swap"
     },
     {
       id: "02",
@@ -20,7 +21,8 @@ const Hero = () => {
       role: "Frontend / UI Development",
       desc: "Modern healthcare UI with data visualization and clean interactions",
       tech: ["HTML", "Tailwind CSS", "JavaScript"],
-      link: "#"
+      link: "https://tech-care-eosin.vercel.app/",
+      code: "https://github.com/Nouman-Ahmed-Khan/Tech-Care"
     },
     {
       id: "03",
@@ -28,7 +30,8 @@ const Hero = () => {
       role: "Frontend Development",
       desc: "Software house website with responsive, user-friendly design",
       tech: ["HTML", "CSS", "Bootstrap", "JavaScript"],
-      link: "https://proswebtech.com/"
+      link: "https://proswebtech.com/",
+      code: "https://github.com/Nouman-Ahmed-Khan"
     }
   ];
 
@@ -54,7 +57,7 @@ const Hero = () => {
   }, [nextSlide, isPaused]);
 
   return (
-    <main className="flex-1 flex items-center justify-center px-6 py-12 relative z-10">
+    <main id="_hello" className="flex-1 flex items-center justify-center px-6 py-12 relative z-10">
       <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         
         {/* Left Side: Intro */}
@@ -64,7 +67,7 @@ const Hero = () => {
             Nouman Ahmed Khan
           </h1>
           <div className="flex items-center gap-2">
-            <span className="text-purple-400 font-mono text-xl">{">"}</span>
+            <span className="text-purple-400 font-mono text-xl">{"/>"}</span>
             <span className="font-mono text-xl text-purple-400 tracking-widest">Front-end developer</span>
           </div>
           
@@ -72,7 +75,11 @@ const Hero = () => {
             <p className="font-mono text-sm text-gray-500">// find my profile on Github:</p>
             <div className="bg-slate-900/50 border-l-2 border-cyan-400/50 px-4 py-3 rounded backdrop-blur-sm">
               <code className="text-sm">
-                <span className="text-purple-400">const</span> <span className="text-cyan-400">githubLink</span> = <span className="text-amber-400">"https://github.com/Nouman-Ahmed-Khan"</span>
+                <span className="text-purple-400">const</span> <span className="text-cyan-400">githubLink</span> = <span className="text-amber-400">
+                  <a href="https://github.com/Nouman-Ahmed-Khan" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                    "https://github.com/Nouman-Ahmed-Khan"
+                  </a>
+                </span>
               </code>
             </div>
           </div>
@@ -94,7 +101,7 @@ const Hero = () => {
             </div>
 
             <div className="p-8 relative overflow-hidden h-[460px]">
-              {/* Navigation Arrows (Restored) */}
+              {/* Navigation Arrows */}
               <button 
                 onClick={prevSlide} 
                 className="carousel-arrow absolute left-2 top-[40%] -translate-y-1/2 group z-30"
@@ -153,11 +160,14 @@ const Hero = () => {
                   <div className="flex gap-4 pt-6">
                     <button 
                       onClick={() => window.open(projects[currentSlide].link, '_blank')}
-                      className="flex-1 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/50 text-cyan-400 py-2.5 rounded-lg transition-all font-mono text-xs font-bold hover:shadow-[0_0_20px_rgba(34,211,209,0.3)]"
+                      className="cursor-pointer flex-1 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/50 text-cyan-400 py-2.5 rounded-lg transition-all font-mono text-sm font-bold hover:shadow-[0_0_20px_rgba(34,211,209,0.3)]"
                     >
                       view-live
                     </button>
-                    <button className="flex-1 bg-slate-800/30 hover:bg-slate-800/60 border border-gray-700 text-gray-400 py-2.5 rounded-lg transition-all font-mono text-xs hover:text-white">
+                    <button 
+                      onClick={() => window.open(projects[currentSlide].code, '_blank')}
+                      className="cursor-pointer flex-1 bg-slate-800/30 hover:bg-slate-800/60 border border-gray-700 text-gray-400 py-2.5 rounded-lg transition-all font-mono text-sm hover:text-white"
+                    >
                       view-code
                     </button>
                   </div>
