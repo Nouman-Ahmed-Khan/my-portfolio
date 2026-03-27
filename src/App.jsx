@@ -3,6 +3,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import CosmicBackground from './components/layout/CosmicBackground';
 import Navbar from './components/layout/Navbar';
 import Hero from './components/sections/Hero';
+import AboutMe from './components/sections/AboutMe';
 import Footer from './components/layout/Footer';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <CosmicBackground />
         <Navbar />
         <Hero />
+        <AboutMe />
         <Footer />
       </div>
     </ThemeProvider>
