@@ -60,28 +60,46 @@ const Hero = () => {
     <main id="_hello" className="flex-1 flex items-center justify-center px-6 py-12 relative z-10">
       <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         
-        {/* Left Side: Intro */}
-        <div className="space-y-6">
-          <p className="font-mono text-lg text-gray-400">Hi all. I am</p>
-          <h1 className="font-mono text-5xl lg:text-6xl font-bold text-white drop-shadow-[0_0_20px_rgba(34,211,209,0.3)]">
-            Nouman Ahmed Khan
+        {/* Left Side: Headline */}
+        <div className="space-y-7">
+          <p className="font-mono text-sm text-cyan-400 tracking-widest uppercase">// Front-End Developer</p>
+
+          <h1 className="font-mono text-4xl lg:text-5xl font-bold text-white leading-tight">
+            Crafting Interfaces That{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 drop-shadow-[0_0_20px_rgba(34,211,209,0.4)]">
+              Look Great
+            </span>
+            ,{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 drop-shadow-[0_0_20px_rgba(168,85,247,0.4)]">
+              Feel Fast
+            </span>
+            , and{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 drop-shadow-[0_0_20px_rgba(34,211,209,0.4)]">
+              Work Perfectly
+            </span>
+            .
           </h1>
-          <div className="flex items-center gap-2">
-            <span className="text-purple-400 font-mono text-xl">{"/>"}</span>
-            <span className="font-mono text-xl text-purple-400 tracking-widest">Front-end developer</span>
-          </div>
-          
-          <div className="pt-8 space-y-4">
-            <p className="font-mono text-sm text-gray-500">// find my profile on Github:</p>
-            <div className="bg-slate-900/50 border-l-2 border-cyan-400/50 px-4 py-3 rounded backdrop-blur-sm">
-              <code className="text-sm">
-                <span className="text-purple-400">const</span> <span className="text-cyan-400">githubLink</span> = <span className="text-amber-400">
-                  <a href="https://github.com/Nouman-Ahmed-Khan" target="_blank" rel="noopener noreferrer" className="hover:underline">
-                    "https://github.com/Nouman-Ahmed-Khan"
-                  </a>
-                </span>
-              </code>
-            </div>
+
+          <p className="text-gray-400 text-sm leading-8 max-w-md">
+            Front-End Developer based in <span className="text-gray-200">Islamabad, Pakistan 📍.</span>
+          </p>
+
+          <div className="flex items-center gap-4 pt-2 flex-wrap">
+          <a
+      href="https://wa.me/923473727277?text=Hello%20Nouman!%20I%20would%20like%20to%20connect%20with%20you."
+      target="_blank"
+      rel="noopener noreferrer"
+      className="font-mono text-sm px-6 py-3 rounded-lg bg-cyan-400/10 border border-cyan-400/50 text-cyan-400 hover:bg-cyan-400/20 hover:shadow-[0_0_20px_rgba(34,211,209,0.3)] transition-all duration-300"
+    >
+      Connect With Me →
+    </a>
+            <a
+              href="https://www.github.com/Nouman-Ahmed-Khan"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-sm px-6 py-3 rounded-lg bg-slate-800/50 border border-gray-700 text-gray-400 hover:text-white hover:border-gray-500 transition-all duration-300">
+              View My Work
+            </a>
           </div>
         </div>
 

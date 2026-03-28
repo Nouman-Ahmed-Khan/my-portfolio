@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import profilePhoto from '../../assets/My_Professional_Image.png';
 
 // ── DATA ──────────────────────────────────────────────────────────────────────
 
@@ -100,7 +101,7 @@ const SectionLabel = ({ comment, title }) => {
   const parts = title.split(/-(.+)/);
   return (
     <div className="mb-10">
-      <p className="font-mono text-gray-500 text-xs mb-1">{comment}</p>
+      <p className="font-mono text-gray-500 text-sm mb-1">{comment}</p>
       <h3 className="font-mono text-2xl font-bold text-white">
         <span className="text-purple-400">{parts[0]}</span>
         {parts[1] && <span className="text-cyan-400">-{parts[1]}</span>}
@@ -122,6 +123,7 @@ const AboutMe = () => {
   const [expandedExp, setExpandedExp] = useState(null);
   const sectionRef = useRef(null);
   const [visible, setVisible] = useState(false);
+  const expGridRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -132,37 +134,55 @@ const AboutMe = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Close expanded card when clicking outside the experience grid
+  useEffect(() => {
+    if (expandedExp === null) return;
+    const handleClickOutside = (e) => {
+      if (expGridRef.current && !expGridRef.current.contains(e.target)) {
+        setExpandedExp(null);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [expandedExp]);
+
   return (
     <section id="_about-me" ref={sectionRef} className="relative z-10 px-6 py-24">
       <div className="max-w-7xl mx-auto space-y-28">
 
         {/* ── ABOUT ME BIO ── */}
         <div>
-          <SectionLabel comment="// who am i" title="about-me" />
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <SectionLabel comment="// who am i" title="About-Me" />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
 
-            {/* Terminal card */}
-            <div className="bg-slate-900/50 border border-gray-700/50 rounded-xl overflow-hidden backdrop-blur-sm shadow-[0_0_40px_rgba(34,211,209,0.06)]">
-              <div className="flex items-center gap-2 px-4 py-3 border-b border-gray-700/30 bg-slate-900/70">
-                <div className="w-3 h-3 rounded-full bg-red-500/80 shadow-[0_0_6px_rgba(239,68,68,0.5)]" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500/80 shadow-[0_0_6px_rgba(234,179,8,0.5)]" />
-                <div className="w-3 h-3 rounded-full bg-green-500/80 shadow-[0_0_6px_rgba(34,197,94,0.5)]" />
-                <span className="font-mono text-[10px] uppercase tracking-widest text-gray-500 ml-2">nouman.config.js</span>
-              </div>
-              <div className="p-6 font-mono text-sm space-y-1 leading-7">
-                <p><span className="text-purple-400">const </span><span className="text-cyan-400">me</span><span className="text-gray-500"> = {'{'}</span></p>
-                <p className="pl-5"><span className="text-amber-400">name</span><span className="text-gray-500">: </span><span className="text-green-400">"Nouman Ahmed Khan"</span><span className="text-gray-500">,</span></p>
-                <p className="pl-5"><span className="text-amber-400">role</span><span className="text-gray-500">: </span><span className="text-green-400">"Front-End Developer"</span><span className="text-gray-500">,</span></p>
-                <p className="pl-5"><span className="text-amber-400">location</span><span className="text-gray-500">: </span><span className="text-green-400">"Islamabad, Pakistan"</span><span className="text-gray-500">,</span></p>
-                <p className="pl-5"><span className="text-amber-400">education</span><span className="text-gray-500">: </span><span className="text-green-400">"BS Computer Science — VU Pakistan"</span><span className="text-gray-500">,</span></p>
-                <p className="pl-5"><span className="text-amber-400">available</span><span className="text-gray-500">: </span><span className="text-cyan-400">true</span><span className="text-gray-500">,</span></p>
-                <p><span className="text-gray-500">{'}'}</span></p>
+            {/* Profile Photo */}
+            <div className="flex justify-center">
+              <div className="relative group">
+                {/* Outer glow ring */}
+                <div className="absolute -inset-1.5 rounded-full bg-gradient-to-br from-cyan-400 via-purple-500 to-cyan-400 opacity-60 blur-md group-hover:opacity-90 transition-opacity duration-500" />
+                {/* Photo */}
+                <div className="relative w-80 h-80 rounded-full border-2 border-cyan-400/50 overflow-hidden shadow-[0_0_60px_rgba(34,211,209,0.25)]">
+                  <img
+                    src={profilePhoto}
+                    alt="Nouman Ahmed Khan"
+                    className="w-full h-full object-cover object-top"
+                  />
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-t from-slate-900/20 to-transparent" />
+                </div>
+                {/* Floating status badge */}
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-slate-900 border border-cyan-400/40 rounded-full px-4 py-1.5 shadow-[0_0_14px_rgba(34,211,209,0.2)] whitespace-nowrap">
+                  <span className="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_6px_rgba(74,222,128,0.8)] animate-pulse" />
+                  <span className="font-mono text-[10px] text-green-400">available for work</span>
+                </div>
               </div>
             </div>
 
             {/* Bio text */}
-            <div className="space-y-4">
-              <p className="font-mono text-[10px] text-gray-500 uppercase tracking-widest">// summary</p>
+            <div className="space-y-5">
+              <p className="font-mono text-sm text-gray-500 uppercase tracking-widest">// summary</p>
+              <h3 className="font-mono text-2xl font-bold text-white leading-snug">
+                Hi, I'm <span className="text-cyan-400">Nouman</span> 👋
+              </h3>
               <p className="text-gray-300 text-sm leading-8">
                 I'm a <span className="text-cyan-400 font-semibold">Front-End Developer</span> specializing in building responsive, high-quality user interfaces using <span className="text-cyan-400">ReactJS</span>, <span className="text-cyan-400">TailwindCSS</span>, and modern <span className="text-cyan-400">JavaScript (ES6+)</span>.
               </p>
@@ -174,7 +194,7 @@ const AboutMe = () => {
               </p>
               <div className="pt-2 flex gap-3 flex-wrap">
                 {['Open to Work', 'Freelance OK', 'Remote Friendly'].map(tag => (
-                  <span key={tag} className="font-mono text-[10px] px-3 py-1.5 rounded-full border border-cyan-400/30 text-cyan-400 bg-cyan-400/5">
+                  <span key={tag} className="font-mono text-[12px] px-3 py-1.5 rounded-full border border-cyan-400/30 text-cyan-400 bg-cyan-400/5">
                     ✦ {tag}
                   </span>
                 ))}
@@ -185,8 +205,8 @@ const AboutMe = () => {
 
         {/* ── PROFESSIONAL EXPERIENCE ── */}
         <div>
-          <SectionLabel comment="// where i've worked" title="professional-experience" />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <SectionLabel comment="// where i've worked" title="Professional-Experience" />
+          <div ref={expGridRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
             {experiences.map((exp, i) => {
               const c = colorMap[exp.color];
               const isOpen = expandedExp === i;
@@ -201,23 +221,24 @@ const AboutMe = () => {
                     </div>
                     <div className="min-w-0">
                       <h4 className={`font-mono text-sm font-bold ${c.text}`}>{exp.company}</h4>
-                      <p className="font-mono text-xs text-white mt-0.5 leading-tight">{exp.role}</p>
+
+                      <p className="font-mono text-sm text-white mt-0.5 leading-tight">{exp.role}</p>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-2 mb-4">
-                    <span className={`font-mono text-[10px] px-2 py-1 rounded border ${c.border} ${c.bg} ${c.text}`}>{exp.duration}</span>
+                    <span className={`font-mono text-[12px] px-2 py-1 rounded border ${c.border} ${c.bg} ${c.text}`}>{exp.duration}</span>
                   </div>
 
-                  <p className="text-gray-400 text-xs leading-6 flex-1">
+                  <p className="text-gray-400 text-sm leading-6 flex-1">
                     {isOpen ? exp.desc : exp.desc.slice(0, 100) + '...'}
                   </p>
 
                   <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-700/30">
-                    <span className="font-mono text-[10px] text-gray-600">📍 {exp.type}</span>
+                    <span className="font-mono text-[12px] text-gray-600">📍 {exp.type}</span>
                     <button
                       onClick={() => setExpandedExp(isOpen ? null : i)}
-                      className={`font-mono text-[11px] ${c.text} hover:underline transition-colors`}
+                      className={`font-mono text-[12px] ${c.text} hover:underline transition-colors`}
                     >
                       {isOpen ? 'Show Less ↑' : 'View Details →'}
                     </button>
@@ -230,7 +251,7 @@ const AboutMe = () => {
 
         {/* ── SKILLS & TECHNOLOGIES ── */}
         <div>
-          <SectionLabel comment="// what i work with" title="skills-and-technologies" />
+          <SectionLabel comment="// what i work with" title="Skills-and-Technologies" />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {skillGroups.map((group, i) => (
               <div
@@ -238,15 +259,14 @@ const AboutMe = () => {
                 className="bg-slate-900/40 border border-gray-700/40 hover:border-cyan-400/30 rounded-xl p-5 backdrop-blur-sm transition-colors duration-300 group"
               >
                 <div className="flex items-center gap-2 mb-4">
-                  <span className="text-lg">{group.icon}</span>
-                  <p className="font-mono text-[11px] text-cyan-400 uppercase tracking-widest">{group.category}</p>
+                 <span className="text-lg text-gray-300">{group.icon}</span>
+                  <p className="font-mono text-xs text-cyan-400 uppercase tracking-widest">{group.category}</p>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {group.skills.map(skill => (
                     <span
                       key={skill}
-                      className="font-mono text-[11px] px-2.5 py-1 rounded-md border border-gray-700/60 bg-slate-800/50 text-gray-300 hover:border-cyan-400/40 hover:text-cyan-400 hover:bg-cyan-400/5 transition-all duration-200 cursor-default"
-                    >
+                      className="font-mono text-[12px] px-2.5 py-1 rounded-md border border-gray-700/60 bg-slate-800/50 text-gray-300 hover:border-cyan-400/40 hover:text-cyan-400 hover:bg-cyan-400/5 transition-all duration-200 cursor-default">
                       {skill}
                     </span>
                   ))}
@@ -258,7 +278,7 @@ const AboutMe = () => {
 
         {/* ── KEY ACHIEVEMENTS ── */}
         <div>
-          <SectionLabel comment="// what i've accomplished" title="key-achievements" />
+          <SectionLabel comment="// what i've accomplished" title="Key-Achievements" />
           <p className="font-mono text-xs text-gray-500 -mt-6 mb-8">// proven track record of delivering measurable impact</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {achievements.map((ach, i) => (
@@ -279,9 +299,9 @@ const AboutMe = () => {
                   <div className="space-y-2">
                     <div className="flex items-center gap-2 flex-wrap">
                       <h4 className="font-mono text-sm font-bold text-white group-hover:text-cyan-400 transition-colors">{ach.title}</h4>
-                      <span className="font-mono text-[9px] px-2 py-0.5 rounded-full border border-purple-400/30 text-purple-400 bg-purple-400/5">{ach.tag}</span>
+                      <span className="font-mono text-[10px] px-2 py-0.5 rounded-full border border-purple-400/30 text-purple-400 bg-purple-400/5">{ach.tag}</span>
                     </div>
-                    <p className="text-xs text-gray-400 leading-5">{ach.desc}</p>
+                    <p className="text-sm text-gray-400 leading-6">{ach.desc}</p>
                   </div>
                 </div>
               </div>
