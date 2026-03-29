@@ -70,6 +70,20 @@
   @apply border-cyan-400 text-cyan-400 bg-cyan-400/10 shadow-[0_0_20px_rgba(34,211,209,0.4)];
 }
 
+/* Light mode carousel arrows */
+html:not(.dark) .carousel-arrow {
+  @apply bg-white/80 border-slate-200 text-slate-500;
+}
+
+html:not(.dark) .carousel-arrow:hover {
+  @apply border-cyan-400 text-cyan-500 bg-cyan-50 shadow-[0_0_12px_rgba(6,182,212,0.2)];
+}
+
 body {
-  @apply bg-[#0a0e1a] overflow-x-hidden;
+  @apply overflow-x-hidden;
+  background: #0a0e1a;
+}
+
+html:not(.dark) body {
+  background: #eef1f7;
 }
