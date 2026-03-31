@@ -149,7 +149,7 @@ const AboutMe = () => {
   }, [expandedExp]);
 
   return (
-    <section id="_about-me" ref={sectionRef} className="relative z-10 px-6 py-24">
+    <section id="_about-me" ref={sectionRef} className="relative z-10 px-6 pt-24">
       <div className="max-w-7xl mx-auto space-y-28">
 
         {/* ── ABOUT ME BIO ── */}
