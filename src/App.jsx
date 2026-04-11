@@ -5,6 +5,7 @@ import Navbar from './components/layout/Navbar';
 import Hero from './components/sections/Hero';
 import AboutMe from './components/sections/AboutMe';
 import Projects from './components/sections/Projects';
+import Contact from './components/sections/Contact';
 import Footer from './components/layout/Footer';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Hero />
         <AboutMe />
         <Projects />
+        <Contact />
         <Footer />
       </div>
     </ThemeProvider>
