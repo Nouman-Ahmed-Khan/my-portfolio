@@ -154,7 +154,7 @@ const FeaturedCard = ({ project, isDark }) => {
       <p className="font-mono text-xs text-gray-500 uppercase tracking-widest mb-4">// {project.role}</p>
 
       {/* Desc */}
-      <p className="text-sm text-gray-400 leading-7 flex-1 mb-5">{project.desc}</p>
+      <p className="text-sm text-gray-300 leading-7 flex-1 mb-5">{project.desc}</p>
 
       {/* Tech stack */}
       <div className="flex flex-wrap gap-2 mb-5">

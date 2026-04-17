@@ -6,15 +6,6 @@ import { useTheme } from '../../context/ThemeContext';
 
 const experiences = [
   {
-    company: 'ProsWebtech',
-    role: 'Junior Frontend Web Developer',
-    duration: 'Oct 2021 – Sep 2022',
-    type: 'On-site · Full-time',
-    color: 'cyan',
-    initial: 'P',
-    desc: 'Developed responsive, visually appealing websites from scratch. Debugged and optimized frontend code, reducing page load time by 40%. Applied PHP & MySQL to build dynamic, data-driven pages, improving user engagement by 30%.',
-  },
-  {
     company: 'in2itivebiz',
     role: 'Virtual Assistant',
     duration: 'Dec 2022 – Jan 2023',
@@ -22,6 +13,15 @@ const experiences = [
     color: 'purple',
     initial: 'i',
     desc: 'Conducted quality checks on deliverables, reducing content errors and improving brand consistency. Designed branded visuals using Canva and Photoshop. Managed social media accounts, leading to a 45% increase in followers and engagement.',
+  },
+  {
+    company: 'ProsWebtech',
+    role: 'Junior Frontend Web Developer',
+    duration: 'Oct 2021 – Sep 2022',
+    type: 'On-site · Full-time',
+    color: 'cyan',
+    initial: 'P',
+    desc: 'Developed responsive, visually appealing websites from scratch. Debugged and optimized frontend code, reducing page load time by 40%. Applied PHP & MySQL to build dynamic, data-driven pages, improving user engagement by 30%.',
   },
   {
     company: 'Develop Me This',
@@ -243,7 +243,7 @@ const AboutMe = () => {
                     <span className="font-mono text-[12px] text-gray-400">📍 {exp.type}</span>
                     <button
                       onClick={() => setExpandedExp(isOpen ? null : i)}
-                      className={`font-mono text-[12px] ${c.text} hover:underline transition-colors`}
+                      className={`font-mono text-[12px] ${c.text} hover:underline transition-colors cursor-pointer`}
                     >
                       {isOpen ? 'Show Less ↑' : 'View Details →'}
                     </button>
@@ -305,7 +305,7 @@ const AboutMe = () => {
                   <div className="space-y-2">
                     <div className="flex items-center gap-2 flex-wrap">
                       <h4 className="font-mono text-sm font-bold text-white group-hover:text-cyan-400 transition-colors">{ach.title}</h4>
-                      <span className="font-mono text-[10px] px-2 py-0.5 rounded-full border border-purple-400/30 text-purple-400 bg-purple-400/5">{ach.tag}</span>
+                      <span className="font-mono text-[10px] px-2 py-0.5 rounded-full border border-purple-400/30 text-purple-500 bg-purple-400/5">{ach.tag}</span>
                     </div>
                     <p className="text-sm text-gray-300 leading-6">{ach.desc}</p>
                   </div>
