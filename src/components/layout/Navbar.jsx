@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useTheme } from '../../context/ThemeContext';
 import { Sun, Moon } from 'lucide-react';
 
-const NAV_ITEMS = ['_hello', '_about-me', '_projects', '_contact-me'];
+const NAV_ITEMS = ['_Hello', '_About-Me', '_Projects', '_Contact-Me'];
 
 const Navbar = () => {
   const { isDark, toggleTheme } = useTheme();
