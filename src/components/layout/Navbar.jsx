@@ -2,7 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useTheme } from '../../context/ThemeContext';
 import { Sun, Moon } from 'lucide-react';
 
-const NAV_ITEMS = ['_Hello', '_About-Me', '_Projects', '_Contact-Me'];
+const NAV_ITEMS = [
+  { id: '_hello',      label: '_Hello'      },
+  { id: '_about-me',  label: '_About-me'   },
+  { id: '_projects',  label: '_Projects'   },
+  { id: '_contact-me',label: '_Contact-me' },
+];
 
 const Navbar = () => {
   const { isDark, toggleTheme } = useTheme();
@@ -10,11 +15,11 @@ const Navbar = () => {
 
   useEffect(() => {
     const observers = [];
-    NAV_ITEMS.forEach((item) => {
-      const el = document.getElementById(item);
+    NAV_ITEMS.forEach(({ id }) => {
+      const el = document.getElementById(id);
       if (!el) return;
       const observer = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setActiveSection(item); },
+        ([entry]) => { if (entry.isIntersecting) setActiveSection(id); },
         { threshold: 0.5 }
       );
       observer.observe(el);
@@ -23,10 +28,10 @@ const Navbar = () => {
     return () => observers.forEach((obs) => obs.disconnect());
   }, []);
 
-  const handleNavClick = (e, item) => {
+  const handleNavClick = (e, id) => {
     e.preventDefault();
-    document.getElementById(item)?.scrollIntoView({ behavior: 'smooth' });
-    setActiveSection(item);
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    setActiveSection(id);
   };
 
   return (
@@ -46,22 +51,22 @@ const Navbar = () => {
 
         {/* Nav links */}
         <div className="hidden md:flex items-center gap-8 font-mono text-sm">
-          {NAV_ITEMS.map((item) => {
-            const isActive = activeSection === item;
+          {NAV_ITEMS.map(({ id, label }) => {
+            const isActive = activeSection === id;
             return (
               <a
-                key={item}
-                href={`#${item}`}
-                onClick={(e) => handleNavClick(e, item)}
+                key={id}
+                href={`#${id}`}
+                onClick={(e) => handleNavClick(e, id)}
                 className={`relative pb-1 transition-colors duration-300 ${
                   isActive
                     ? 'text-cyan-500'
                     : isDark
                       ? 'text-gray-400 hover:text-cyan-400'
-                      : 'text-slate-600 hover:text-cyan-600'
+                      : 'text-slate-500 hover:text-cyan-600'
                 }`}
               >
-                {item}
+                {label}
                 {isActive && (
                   <span className="absolute bottom-0 left-0 w-full h-[2px] bg-cyan-400 rounded-full shadow-[0_0_8px_rgba(34,211,209,0.8)]" />
                 )}

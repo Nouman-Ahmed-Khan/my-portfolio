@@ -119,7 +119,7 @@ const Hero = () => {
             className={`rounded-xl p-1 relative max-w-md w-full project-float border transition-all duration-500 ${
               isDark
                 ? 'border-cyan-400/30 bg-slate-900/40 backdrop-blur-xl shadow-[0_0_50px_rgba(34,211,209,0.15)]'
-                : 'border-slate-400 bg-white/70 backdrop-blur-xl shadow-[0_4px_40px_rgba(0,0,0,0.15)]'
+                : 'border-slate-400 bg-white-200/10 backdrop-blur-xl shadow-[0_4px_40px_rgba(0,0,0,0.15)]'
             }`}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
