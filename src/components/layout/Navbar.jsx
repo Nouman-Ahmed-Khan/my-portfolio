@@ -20,7 +20,10 @@ const Navbar = () => {
       if (!el) return;
       const observer = new IntersectionObserver(
         ([entry]) => { if (entry.isIntersecting) setActiveSection(id); },
-        { threshold: 0.5 }
+        {
+          threshold: 0,
+          rootMargin: '-10% 0px -80% 0px',
+        }
       );
       observer.observe(el);
       observers.push(observer);

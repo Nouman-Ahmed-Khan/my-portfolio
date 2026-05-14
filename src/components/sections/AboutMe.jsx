@@ -6,15 +6,6 @@ import { useTheme } from '../../context/ThemeContext';
 
 const experiences = [
   {
-    company: 'in2itivebiz',
-    role: 'Virtual Assistant',
-    duration: 'Dec 2022 – Jan 2023',
-    type: 'Remote · Contract',
-    color: 'purple',
-    initial: 'i',
-    desc: 'Conducted quality checks on deliverables, reducing content errors and improving brand consistency. Designed branded visuals using Canva and Photoshop. Managed social media accounts, leading to a 45% increase in followers and engagement.',
-  },
-  {
     company: 'ProsWebtech',
     role: 'Junior Frontend Web Developer',
     duration: 'Oct 2021 – Sep 2022',
@@ -22,6 +13,15 @@ const experiences = [
     color: 'cyan',
     initial: 'P',
     desc: 'Developed responsive, visually appealing websites from scratch. Debugged and optimized frontend code, reducing page load time by 40%. Applied PHP & MySQL to build dynamic, data-driven pages, improving user engagement by 30%.',
+  },
+  {
+    company: 'in2itivebiz',
+    role: 'Virtual Assistant',
+    duration: 'Dec 2022 – Jan 2023',
+    type: 'Remote · Contract',
+    color: 'purple',
+    initial: 'i',
+    desc: 'Conducted quality checks on deliverables, reducing content errors and improving brand consistency. Designed branded visuals using Canva and Photoshop. Managed social media accounts, leading to a 45% increase in followers and engagement.',
   },
   {
     company: 'Develop Me This',
@@ -46,41 +46,39 @@ const skillGroups = [
     skills: ['PHP', 'MySQL', 'WordPress'],
   },
   {
-    category: 'DevOps & Tools',
+    category: 'Dev Tools',
     icon: '🛠',
-    skills: ['Git', 'GitHub', 'Figma', 'Vite'],
+    skills: ['Git', 'GitHub', 'Figma', 'Vite', 'VS Code'],
   },
   {
-    category: 'Design',
+    category: 'Design & Media',
     icon: '✦',
-    skills: ['Adobe Photoshop', 'Adobe Illustrator', 'Adobe Lightroom', 'Canva'],
+    skills: ['Adobe Photoshop', 'Adobe Illustrator', 'Adobe Lightroom', 'Canva', 'Photography', 'Photo Editing'],
+  },
+  {
+    category: 'Productivity',
+    icon: '📋',
+    skills: ['MS Word', 'MS Excel', 'Document Control', 'File Management', 'Data Entry'],
+  },
+  {
+    category: 'Soft Skills',
+    icon: '🤝',
+    skills: ['Team Leadership', 'Project Coordination', 'Social Media Management', 'Research & Analysis', 'Client Communication'],
   },
 ];
 
 const achievements = [
   {
-    icon: '⚡',
-    title: '40% Faster Load Times',
-    desc: 'Debugged and optimized frontend code at ProsWebtech, cutting page load time by 40%.',
-    tag: 'Performance',
+    icon: '🔍',
+    title: 'Market Research & Analysis',
+    desc: 'Currently analyzing market options, streamlining data, and preparing tenders at The Imperium Alliance to support client decision-making.',
+    tag: 'Research',
   },
   {
-    icon: '📈',
-    title: '45% Engagement Growth',
-    desc: 'Managed and optimized social media accounts at in2itivebiz, growing followers and engagement by 45%.',
-    tag: 'Growth',
-  },
-  {
-    icon: '🚀',
-    title: '30% More User Engagement',
-    desc: 'Applied PHP & MySQL to build dynamic pages that improved site user engagement by over 30%.',
-    tag: 'Development',
-  },
-  {
-    icon: '🎯',
-    title: '20% Social Boost',
-    desc: 'Designed branded visuals using Canva and Photoshop that boosted social engagement by 20%.',
-    tag: 'Design',
+    icon: '🗂️',
+    title: 'Database & Records Management',
+    desc: 'Managed and maintained client document databases and records at The AKD Group, ensuring accuracy and accessibility.',
+    tag: 'Management',
   },
   {
     icon: '🏅',
@@ -93,6 +91,30 @@ const achievements = [
     title: 'AI & Data Science',
     desc: 'Completed ITU-DTC courses in Modern AI and Introduction to Data Science.',
     tag: 'Upskilling',
+  },
+  {
+    icon: '📈',
+    title: '45% Engagement Growth',
+    desc: 'Managed and optimized social media accounts at in2itivebiz, growing followers and engagement by 45%.',
+    tag: 'Growth',
+  },
+  {
+    icon: '⚡',
+    title: '40% Faster Load Times',
+    desc: 'Debugged and optimized frontend code at ProsWebtech, cutting page load time by 40%.',
+    tag: 'Performance',
+  },
+  {
+    icon: '🚀',
+    title: '30% More User Engagement',
+    desc: 'Applied PHP & MySQL to build dynamic pages that improved site user engagement by over 30%.',
+    tag: 'Development',
+  },
+  {
+    icon: '🎯',
+    title: '20% Social Boost',
+    desc: 'Designed branded visuals using Canva and Photoshop that boosted social engagement by 20%.',
+    tag: 'Design',
   },
 ];
 
@@ -149,7 +171,7 @@ const AboutMe = () => {
   }, [expandedExp]);
 
   return (
-    <section id="_about-me" ref={sectionRef} className="relative z-10 px-6 pt-24">
+    <section id="_about-me" ref={sectionRef} className="relative z-10 px-6 py-24">
       <div className="max-w-7xl mx-auto space-y-28">
 
         {/* ── ABOUT ME BIO ── */}
@@ -240,10 +262,10 @@ const AboutMe = () => {
                   </p>
 
                   <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-700/40">
-                    <span className="font-mono text-[12px] text-gray-400">📍 {exp.type}</span>
+                    <span className="font-mono text-[12px] text-gray-500">📍 {exp.type}</span>
                     <button
                       onClick={() => setExpandedExp(isOpen ? null : i)}
-                      className={`font-mono text-[12px] ${c.text} hover:underline transition-colors cursor-pointer`}
+                      className={`font-mono text-[12px] ${c.text} hover:underline transition-colors`}
                     >
                       {isOpen ? 'Show Less ↑' : 'View Details →'}
                     </button>
@@ -256,15 +278,15 @@ const AboutMe = () => {
 
         {/* ── SKILLS & TECHNOLOGIES ── */}
         <div>
-          <SectionLabel comment="// what i work with" title="Skills-and-Technologies" isDark={isDark} />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <SectionLabel comment="// what i work with" title="skills-and-technologies" isDark={isDark} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {skillGroups.map((group, i) => (
               <div
                 key={i}
                 className="bg-slate-900/80 border border-gray-700/40 hover:border-cyan-400/30 rounded-xl p-5 backdrop-blur-sm transition-colors duration-300 group"
               >
                 <div className="flex items-center gap-2 mb-4">
-                  <span className="text-lg text-gray-200">{group.icon}</span>
+                  <span className="text-lg text-whitegit">{group.icon}</span>
                   <p className="font-mono text-xs text-cyan-400 uppercase tracking-widest">{group.category}</p>
                 </div>
                 <div className="flex flex-wrap gap-2">
@@ -284,7 +306,7 @@ const AboutMe = () => {
 
         {/* ── KEY ACHIEVEMENTS ── */}
         <div>
-          <SectionLabel comment="// what i've accomplished" title="Key-Achievements" isDark={isDark} />
+          <SectionLabel comment="// what i've accomplished" title="key-achievements" isDark={isDark} />
           <p className={`font-mono text-xs -mt-6 mb-8 ${isDark ? 'text-gray-500' : 'text-slate-400'}`}>// proven track record of delivering measurable impact</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {achievements.map((ach, i) => (
@@ -305,7 +327,7 @@ const AboutMe = () => {
                   <div className="space-y-2">
                     <div className="flex items-center gap-2 flex-wrap">
                       <h4 className="font-mono text-sm font-bold text-white group-hover:text-cyan-400 transition-colors">{ach.title}</h4>
-                      <span className="font-mono text-[10px] px-2 py-0.5 rounded-full border border-purple-400/30 text-purple-500 bg-purple-400/5">{ach.tag}</span>
+                      <span className="font-mono text-[10px] px-2 py-0.5 rounded-full border border-purple-400/30 text-purple-400 bg-purple-400/5">{ach.tag}</span>
                     </div>
                     <p className="text-sm text-gray-300 leading-6">{ach.desc}</p>
                   </div>
