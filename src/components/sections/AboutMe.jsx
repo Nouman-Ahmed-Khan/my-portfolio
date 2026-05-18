@@ -306,7 +306,7 @@ const AboutMe = () => {
 
         {/* ── KEY ACHIEVEMENTS ── */}
         <div>
-          <SectionLabel comment="// what i've accomplished" title="key-achievements" isDark={isDark} />
+          <SectionLabel comment="// what i've accomplished" title="Key-Achievements" isDark={isDark} />
           <p className={`font-mono text-xs -mt-6 mb-8 ${isDark ? 'text-gray-500' : 'text-slate-400'}`}>// proven track record of delivering measurable impact</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {achievements.map((ach, i) => (
