@@ -286,7 +286,7 @@ const AboutMe = () => {
                 className="bg-slate-900/80 border border-gray-700/40 hover:border-cyan-400/30 rounded-xl p-5 backdrop-blur-sm transition-colors duration-300 group"
               >
                 <div className="flex items-center gap-2 mb-4">
-                  <span className="text-lg text-whitegit">{group.icon}</span>
+                  <span className="text-lg text-white">{group.icon}</span>
                   <p className="font-mono text-xs text-cyan-400 uppercase tracking-widest">{group.category}</p>
                 </div>
                 <div className="flex flex-wrap gap-2">
