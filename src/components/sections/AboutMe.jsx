@@ -278,7 +278,7 @@ const AboutMe = () => {
 
         {/* ── SKILLS & TECHNOLOGIES ── */}
         <div>
-          <SectionLabel comment="// what i work with" title="skills-and-technologies" isDark={isDark} />
+          <SectionLabel comment="// what i work with" title="Skills-and-Technologies" isDark={isDark} />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {skillGroups.map((group, i) => (
               <div
